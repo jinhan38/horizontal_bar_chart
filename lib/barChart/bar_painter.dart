@@ -21,12 +21,12 @@ class BarPainter extends CustomPainter {
     progressPaint.style = PaintingStyle.stroke;
     progressPaint.strokeCap = StrokeCap.round;
 
-    canvas.drawRect(Rect.fromLTRB(0, 0, size.width, size.height), basePaint);
-    if(progressValue > 0) {
-      canvas.drawRect(
-          Rect.fromLTRB(
-              0, size.height, size.width, size.height - (size.height * progressValue)),
-          progressPaint);
+
+    RRect baseRRect = RRect.fromRectAndRadius(Rect.fromLTRB(0, 0, size.width, size.height), Radius.circular(size.width / 2));
+    RRect progressRRect = RRect.fromRectAndRadius(Rect.fromLTRB(0, size.height, size.width, size.height - (size.height * progressValue)), Radius.circular(size.height / 2));
+    canvas.drawRRect(baseRRect, basePaint);
+    if (progressValue > 0) {
+      canvas.drawRRect(progressRRect, progressPaint);
     }
 
   }

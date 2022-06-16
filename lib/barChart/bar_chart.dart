@@ -65,7 +65,7 @@ class _BarChartState extends State<BarChart>
     });
 
     _scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       if (mounted && _scrollController.hasClients) {
         if (initPosition > 0) {
           if (initPositionScrollAnimation) {
